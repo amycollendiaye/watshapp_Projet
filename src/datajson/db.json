@@ -1,0 +1,14 @@
+{
+   
+
+    "users":[
+        {
+            "id":1,
+            "countryCode":"+221",
+            "telephone":"776598037",
+            "motpasse": "amycolle"
+        }
+        
+        
+    ]
+}
