@@ -1,5 +1,4 @@
 import {conversation} from './pageConvesation';
-const API=import.meta.env.VITE_API_URL
 
 // async function sendMessage() {
 //     const input = document.getElementById("envoyermessage");
@@ -54,20 +53,61 @@ async function afficherZoneMessage(contact) {
     // divmessage.appendChild(sendBtn);
 }
 
-async function sendMessage(contactId, texte) {
-    const response = await fetch(`${API}/contacts/${contactId}`);
-    const contact = await response.json();
-    if (!contact.messages) contact.messages = [];
-    contact.messages.push({
-        texte: texte,
-        date: new Date().toISOString()
-    });
+const API = import.meta.env.VITE_API_URL;
 
-    await fetch(`${API}/contacts/${contactId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: contact.messages })
-    });
+async function sendMessage(contactId, texte) {
+    try {
+        // Vérifier si contactId existe
+        if (!contactId) {
+            console.error('ID du contact manquant');
+            return false;
+        }
+
+        // Convertir en string si c'est un nombre
+        const id = contactId.toString();
+
+        // Récupérer tous les contacts
+        const response = await fetch(`${API}/contacts`);
+        const contacts = await response.json();
+        
+        // Trouver le bon contact
+        const contact = contacts.find(c => c.id.toString() === id);
+        
+        if (!contact) {
+            console.error('Contact non trouvé');
+            return false;
+        }
+
+        // Ajouter le message
+        if (!contact.messages) {
+            contact.messages = [];
+        }
+
+        contact.messages.push({
+            texte: texte,
+            date: new Date().toISOString()
+        });
+
+        // Mettre à jour le contact
+        const updateResponse = await fetch(`${API}/contacts/${id}`, {
+            method: 'PUT', // Utiliser PUT au lieu de PATCH pour json-server
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contact) // Envoyer tout le contact
+        });
+
+        if (!updateResponse.ok) {
+            console.error('Erreur mise à jour:', updateResponse.status);
+            return false;
+        }
+
+        return true;
+
+    } catch (error) {
+        console.error('Erreur:', error);
+        return false;
+    }
 }
 
-export  {sendMessage}
+export { sendMessage }

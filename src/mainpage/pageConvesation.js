@@ -21,14 +21,18 @@ function conversation(contact, id) {
     class:'w-[50px] h-[50px]  rounded-full bg-[#008F8B] text-white flex justify-center items-center',
     id:"envoyer",
     onclick: async () => {
-        const input = document.getElementById("envoyermessage");
+        const input = document.getElementById('envoyermessage');
         const texte = input.value.trim();
         if (!texte) return;
-        await sendMessage(id, texte); // id doit être l'id du contact
-        input.value = "";
-        // Recharge la conversation avec le contact mis à jour
-        const updatedContact = await fetch(`${API}/contacts/${id}`).then(r => r.json());
-        conversation(`${updatedContact.nom} ${updatedContact.prenom}`, updatedContact.id);
+        
+        console.log('Envoi à contact:', id); // Debug
+        const success = await sendMessage(id, texte);
+        
+        if (success) {
+            input.value = '';
+            // Recharger les messages
+            conversation(contact, id);
+        }
     }
 })
      
