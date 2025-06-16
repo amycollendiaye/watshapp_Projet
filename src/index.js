@@ -1,4 +1,5 @@
 import { pageconnexion } from './page_connexion/login.js';
+import {discussionView } from './mainpage/pageDiscussion.js';
 import { appa, initChatInterface } from './mainpage/main.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
      app.innerHTML = '';
         app.appendChild(appa);
-        initChatInterface();
+                initChatInterface();
+
+                app.appendChild(discussionView())
+
     } else {
         app.innerHTML = '';
         app.appendChild(pageconnexion);

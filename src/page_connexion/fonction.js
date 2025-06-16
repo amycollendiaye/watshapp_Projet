@@ -12,7 +12,7 @@ console.log(import.meta)
 async function loginPage(event) {
     event.preventDefault();
     
-                                                                      try {
+        try {
         // Suppression des anciens messages d'erreur
         const errorMessages = document.querySelectorAll('[id$="-error"]');
         errorMessages.forEach(msg => msg.remove());

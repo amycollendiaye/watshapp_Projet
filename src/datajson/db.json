@@ -1,14 +1,58 @@
 {
-   
-
-    "users":[
+  "users": [
+    {
+      "id": "1",
+      "countryCode": "+221",
+      "telephone": "776598037",
+      "motpasse": "amycolle"
+    },
+    {
+      "id": "2",
+      "countryCode": "+221",
+      "telephone": "781030848",
+      "motpasse": "colle"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "306096229050",
+      "prenom": "amy colle",
+      "nom": "ndiaye ❤️🧡",
+      "indicatif": "+221",
+      "numero_telephone": "781030848",
+      "userid": "1",
+      "messages": [
         {
-            "id":1,
-            "countryCode":"+221",
-            "telephone":"776598037",
-            "motpasse": "amycolle"
+          "texte": "amy collle ndiaye",
+          "date": "2025-06-16T11:49:55.095Z"
+        },
+        {
+          "texte": ",fzkelgf",
+          "date": "2025-06-16T11:50:34.078Z"
+        },
+        {
+          "texte": "amy collle ndiaye",
+          "date": "2025-06-16T12:46:26.870Z"
         }
-        
-        
-    ]
+      ]
+    },
+    {
+      "id": "380469665042",
+      "prenom": "amy",
+      "nom": "colle",
+      "indicatif": "+221",
+      "numero_telephone": "781035848",
+      "userid": "1",
+      "messages": [
+        {
+          "texte": "KHOUDIA",
+          "date": "2025-06-16T14:39:49.425Z"
+        },
+        {
+          "texte": "DVNBV",
+          "date": "2025-06-16T14:39:56.836Z"
+        }
+      ]
+    }
+  ]
 }

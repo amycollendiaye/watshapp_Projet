@@ -14,11 +14,15 @@ function clean()
         cleanBandeShow.className="w-[36%] border-2 h-[100%]  flex flex-col border-2"
     }
 }
-function cleanbody()
+function cleanDiscussion()
 {
-     if(app){
-        app.innerHTML = "" 
-        app.className="w-[36%] border-2 h-[100%]  flex flex-col border-2"
+const cleanBandeShowDiscussion=document.getElementById('bandeshowDiscussion')
+
+    console.log("teghu")
+    
+    if(cleanBandeShowDiscussion){
+        cleanBandeShowDiscussion.innerHTML = "" 
+        cleanBandeShowDiscussion.className="w-[60%] h-[100%] bg-[#F7F5F3]"
     }
 }
-export { clean  }
+export { clean ,cleanDiscussion }
