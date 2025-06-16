@@ -79,8 +79,8 @@ console.log(nom);
         nom = nouveauxNoms.nom;
         prenom = nouveauxNoms.prenom;
     }
-const nouveauContact= {
-    id:Math.floor(Date.now() * Math.random()),
+const nouveauContact = {
+    id: String(Math.floor(Date.now() * Math.random())), // Convertir en chaîne
     prenom: prenom,
     nom: nom,
     indicatif: "+221",

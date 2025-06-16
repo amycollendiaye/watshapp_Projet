@@ -63,22 +63,48 @@ async function sendMessage(contactId, texte) {
             return false;
         }
 
-        // Convertir en string si c'est un nombre
-        const id = contactId.toString();
+        // Convertir l'ID en chaîne si ce n'est pas déjà le cas
+        const id = String(contactId);
 
-        // Récupérer tous les contacts
-        const response = await fetch(`${API}/contacts`);
-        const contacts = await response.json();
+        // Récupérer le contact directement avec son ID
+        const response = await fetch(`${API}/contacts/${id}`);
         
-        // Trouver le bon contact
-        const contact = contacts.find(c => c.id.toString() === id);
-        
-        if (!contact) {
-            console.error('Contact non trouvé');
-            return false;
+        if (!response.ok) {
+            // Si le contact n'est pas trouvé, essayons de le récupérer dans la liste complète
+            const allContactsResponse = await fetch(`${API}/contacts`);
+            const allContacts = await allContactsResponse.json();
+            const contact = allContacts.find(c => String(c.id) === id);
+            
+            if (!contact) {
+                console.error('Contact non trouvé');
+                return false;
+            }
+
+            // Initialiser le tableau messages si nécessaire
+            if (!contact.messages) {
+                contact.messages = [];
+            }
+
+            // Ajouter le nouveau message
+            contact.messages.push({
+                texte: texte,
+                date: new Date().toISOString()
+            });
+
+            // Mettre à jour le contact avec POST pour créer un nouvel enregistrement
+            const createResponse = await fetch(`${API}/contacts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(contact)
+            });
+
+            return createResponse.ok;
         }
 
-        // Ajouter le message
+        // Si le contact existe, procéder normalement
+        const contact = await response.json();
         if (!contact.messages) {
             contact.messages = [];
         }
@@ -88,21 +114,18 @@ async function sendMessage(contactId, texte) {
             date: new Date().toISOString()
         });
 
-        // Mettre à jour le contact
+        // Mettre à jour avec PATCH
         const updateResponse = await fetch(`${API}/contacts/${id}`, {
-            method: 'PUT', // Utiliser PUT au lieu de PATCH pour json-server
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(contact) // Envoyer tout le contact
+            body: JSON.stringify({
+                messages: contact.messages
+            })
         });
 
-        if (!updateResponse.ok) {
-            console.error('Erreur mise à jour:', updateResponse.status);
-            return false;
-        }
-
-        return true;
+        return updateResponse.ok;
 
     } catch (error) {
         console.error('Erreur:', error);
