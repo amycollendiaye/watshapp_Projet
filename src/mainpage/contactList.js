@@ -1,6 +1,7 @@
 import { createElement } from "../componement";
 const API = import.meta.env.VITE_API_URL;
 import { conversation } from "./pageConvesation";
+import {cleanDiscussion} from "./cleanPage"
 async function displayContactsWithMessages() {
     try {
         // Récupérer l'ID utilisateur du localStorage

@@ -1,5 +1,5 @@
 import { createElement } from '../componement.js';
-import {cleanBandeShow,cleanBandeShowDiscussion} from './main.js';
+import {cleanBandeShow,allDiscussions,initChatInterface} from './main.js';
 import {clean,cleanDiscussion} from './cleanPage.js';
 import { discussionView } from './pageDiscussion.js';
 import { sendMessage } from './fonctionEnvoyerMessage.js';
@@ -56,10 +56,11 @@ function conversation(contact, id) {
 })
      
    ]) 
-            cleanBandeShowDiscussion.appendChild(header)
-            cleanBandeShowDiscussion.appendChild(divMessage)
-            cleanBandeShowDiscussion.appendChild(diveEditMessages)
-                  const searchIcon= document.getElementById('searchIcon')
+const bande= document.getElementById("bandeshowDiscussion")
+            bande.appendChild(header)
+            bande.appendChild(divMessage)
+            bande.appendChild(diveEditMessages)
+            const searchIcon= document.getElementById('searchIcon')
             searchIcon.innerHTML = search;
             
             const menuIcon =document.getElementById("menuIcon")
@@ -256,8 +257,9 @@ function popupConversation() {
     });
     
     // Assembler le popup
+    const bande= document.getElementById("bandeshowDiscussion")
     popup.appendChild(menuContainer);
-    document.body.appendChild(popup)
+    bande.appendChild(popup)
     
     return popup;
 } 
@@ -272,12 +274,10 @@ function closePopup() {
 
 
 function popupEdit() {
-    console.log("tg,trk")
     // Créer le container du popup avec Tailwind CSS
     const popup = createElement('div', {
         class: 'absolute top-[4rem] p-2 right-[3rem] bg-white rounded-lg  border border-gray-200 min-w-64 popup-enter',
     });
-                console.log(popup)
 
     const menuContainer = createElement('div', {
         class: 'py-2'
@@ -336,10 +336,19 @@ function popupEdit() {
             icon: closedis,
             text: 'Fermer discussion',
             classes: 'flex hover:rounded-[10px] items-center px-4 py-3 hover:bg-[#F7F5F3]      cursor-pointer transition-colors duration-150 ',
-            action: 
-               () => {
-                alert('Sélectionner les discussions cliqué!');
-            }
+            action: ()=>{ 
+const bande= document.getElementById("bandeshowDiscussion")
+              const  appa=document.getElementById("appa")
+              console.log(appa);
+               bande .innerHTML=''
+               bande.classList="w-[60%] h-[100%] flex-col flex  justify-center items-center bg-[#F7F5F3] "
+              console.log(allDiscussions);
+              const a=initChatInterface()
+                 
+                 bande.appendChild(allDiscussions())
+                 bande.appendChild(initChatInterface())
+        }
+    
          
         },
         {
@@ -411,10 +420,11 @@ function popupEdit() {
         menuItem.appendChild(textElement);
         menuContainer.appendChild(menuItem);
     });
+const bande= document.getElementById("bandeshowDiscussion")
 
     // Assembler le popup
     popup.appendChild(menuContainer);
-    document.body.appendChild(popup)
+    bande.appendChild(popup)
 
 
     return popup;

@@ -18,7 +18,7 @@ function cleanDiscussion()
 {
 const cleanBandeShowDiscussion=document.getElementById('bandeshowDiscussion')
 
-    console.log("teghu")
+  
     
     if(cleanBandeShowDiscussion){
         cleanBandeShowDiscussion.innerHTML = "" 

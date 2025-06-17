@@ -55,14 +55,21 @@ const bandeShow = createElement("div", {
     class: "w-[36%] h-[100%] ",
     id: "clean"
 });
-const allDiscussions=createElement('div',{class:"w-[60%] h-[100%] flex-col flex   bg-[#F7F5F3] ",id:"bandeshowDiscussion"},
+ function allDiscussions(){
+    const div=createElement('div',{class:"w-[60%] h-[100%] flex-col flex  justify-center items-center bg-[#F7F5F3] ",id:"bandeshowDiscussion"},
     [createElement("div",{ class:"h-[60%]  flex justify-center items-end  w-[100%] ",id:"fond"}),createElement("div",{class:'flex   gap-[15px] mt-[50px] flex-col justify-center items-center'},[createElement("h1",{ class:"text-[35px] text- font-semi-bold"},"WhatApp Web"),
         createElement('div',{class :'text-sm md:text-base text-gray-600'},[createElement("span",{class:'text-sm md:text-base text-gray-600'},"Envoyez et recevez des messages sans avoir à garder votre téléphone connecté."),createElement("br",{}),createElement("span",{},"Utilisez WhatsApp sur un maximum de 4 appareils et 1 téléphone, simultanément.")])]
     ),createElement("div",{class:" text-sm md:text-base text-gray-600  gap-[5px] justify-center items-center mt-[80px] flex"},[createElement("div",{id:"verouille"}),createElement("span",{class:''},"Vos messages personnels sont chiffrés de bout en bout")])])
-
+    
+    return  div
+ }
 const appa = createElement("div", {
     class: "w-[95%] flex border-[1px]  rounded-lg shadow-lg h-[95%]"
-}, [silderBar, bandeShow,allDiscussions]);
+    ,id:"appa"
+});
+ appa.appendChild(silderBar)
+ appa.appendChild(bandeShow)
+ appa.appendChild(allDiscussions())
 
 function initChatInterface() {
     const buttonMessage = document.getElementById("message");
@@ -89,6 +96,6 @@ export {
     appa, 
     initChatInterface,
     bandeShow as cleanBandeShow  ,
-    allDiscussions as cleanBandeShowDiscussion// Export bandeShow with alias cleanBandeShow
+    allDiscussions
 };
 
