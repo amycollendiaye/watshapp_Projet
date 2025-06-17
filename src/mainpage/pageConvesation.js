@@ -13,7 +13,7 @@ function conversation(contact, id) {
         createElement('div',{class:'flex items-center space-x-4'},[createElement('button',{class:' hover:bg-[#F7F5F3] p-2 rounded-full transition-colors',id:"searchIcon"}),createElement('button',{class: ' hover:bg-[#F7F5F3] p-2 rounded-full transition-colors',id:'menuIcon'})])
         ])   
       
-               const divMessage=createElement('div',{class:"h-[80%] w-full  p-2 items-end flex-col gap-[10px] flex "},)
+               const divMessage=createElement('div',{class:"h-[80%]   max-h-[700px] overflow-y-auto scrollbar-hidden  w-full  p-2 items-end flex-col gap-[10px] flex "},)
 
 
                const diveEditMessages=createElement("div",{class:"  gap-[20px]  justify-between p-[12px] bg-white h-[10%] flex "},[ createElement("div",{class:"w-[6%] flex justify-between "},[ createElement("button",{id:"plus"}),createElement("button",{id:"iconEmoji"})])

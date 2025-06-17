@@ -95,5 +95,21 @@ async function loginPage(event) {
         showFormError("Une erreur est survenue", "form-error");
     }
 }
+function deconnexionPage()
+  {
+       // Récupérer l'ID utilisateur du localStorage
+        const currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser) {
+            console.log('user');
+localStorage.removeItem('user')
+    const app = document.getElementById('app');
 
-export { loginPage };
+ app.innerHTML = '';
+        app.appendChild(pageconnexion);
+
+
+        }
+
+  }
+
+export { loginPage,deconnexionPage };

@@ -2,8 +2,10 @@ import {cleanBandeShow} from './main.js';
 import { createElement } from '../componement.js';
 import { clean } from './cleanPage.js'
 import { creerContact } from './creerContact.js';
+import { deconnexionPage } from '../page_connexion/fonction.js';
 import {add,menu, search,back,contact,groupe,communauteAdd,groupeMenu,messageImportant,deconnexion,selectionDiscussion,formprenom,formtel} from './svg.js';
 import { afficherListeContacts } from './listesContacts.js';
+import { displayContactsWithMessages } from './contactList.js';
 let popupInstance = null;
 function discussionView()
 {
@@ -51,10 +53,18 @@ const div = createElement("div", {
     }, ['Groupes'])
 ])
 ]); 
+ const a= createElement('div',{class:"w-[100%] h-[74%] ",id:"liste"})
+
 
       
        cleanBandeShow.appendChild(stacticDiscussion)
         cleanBandeShow.appendChild(div)
+        // a.appendChild(displayContactsWithMessages())
+        displayContactsWithMessages().then(contactsContainer => {
+    a.appendChild(contactsContainer);
+    console.log(contactsContainer)
+});
+        cleanBandeShow.appendChild(a)
          const buttonAdd=document.getElementById('add')
          const buttouMenu=document.getElementById('menu')
          buttonAdd.innerHTML=add
@@ -163,10 +173,9 @@ function PopupMenu() {
             icon: deconnexion,
             text: 'Déconnexion',
             classes: 'flex hover:rounded-[10px] items-center px-4 py-3 hover:bg-red-400 hover:text-red-400 cursor-pointer transition-colors duration-150 border-t border-gray-100',
-            action: () => {
-                alert('Déconnexion cliqué!');
-                closePopup();
-            }
+            action: 
+                deconnexionPage
+         
         }
     ];
 
