@@ -14,21 +14,23 @@ const silderBar = createElement("div", {
     },
     [
         createElement("button", {
-            class: 'w-[40px] flex justify-center items-center h-[40px] border-2 rounded-[15px]',
+            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
             id: "message",
             onclick: discussionView
         }),
         createElement("button", {
-            class: '',
+            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
             id: 'status',
             onclick: StatusView
         }),
         createElement("button", {
-            class: '',
+            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
+
             id: 'chaine'
         }),
         createElement("button", {
-            class: '',
+            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
+
             id: 'communaute'
         })
     ]),
