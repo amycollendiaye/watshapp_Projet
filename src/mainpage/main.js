@@ -47,7 +47,7 @@ const silderBar = createElement("div", {
         },
         createElement("img", {
             class: "w-[100%] h-[100%] object-cover rounded-[13px]",
-            src: "/public/connexion/image.png"
+            src: "https://i.pinimg.com/736x/6f/83/01/6f8301d68681fd21ecd9ce73c972c766.jpg"
         }))
     ])
 ]);

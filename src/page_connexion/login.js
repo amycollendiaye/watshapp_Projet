@@ -105,7 +105,7 @@ const pageconnexion = createElement("form", {
     ]),
     
     // Section illustration (partie droite)
-       createElement("img",{src:"/public/connexion/login.png",
+       createElement("img",{src:"https://i.imgur.com/sbx5fVK.png"
 
        })])
 
