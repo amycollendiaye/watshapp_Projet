@@ -5,7 +5,7 @@ import { creerContact } from './creerContact.js';
 import { deconnexionPage } from '../page_connexion/fonction.js';
 import {add,menu, search,back,contact,groupe,communauteAdd,groupeMenu,messageImportant,deconnexion,selectionDiscussion,formprenom,formtel} from './svg.js';
 import { afficherListeContacts } from './listesContacts.js';
-import { displayContactsWithMessages } from './contactList.js';
+import { displayContactsWithMessages ,createCocntactList} from './contactList.js';
 let popupInstance = null;
 function discussionView()
 {
@@ -204,10 +204,11 @@ function PopupMenu() {
         menuItem.appendChild(textElement);
         menuContainer.appendChild(menuItem);
     });
+    const  a =document.getElementById("clean")
 
     // Assembler le popup
     popup.appendChild(menuContainer);
-    document.body.appendChild(popup)
+    a.appendChild(popup)
 
 
     return popup;
@@ -223,7 +224,7 @@ function closePopup() {
               
 
 function formulaireCreateContact() {
-clean();
+    clean();
    const header =createElement("div",{class:" p-4  w-[100%] justify-between flex h-[8%] ",id: "header"},[createElement("div",{class:' w-[52%] flex gap-[42px]'},[createElement("button",{id:'formback',onclick:addView}),createElement('h1',{},"Nouveau contact")])])
  const form = createElement('form',{class:"  ml-[70px] shadow-lg  h-[80%] w-[70%] flex flex-col gap-[60px]   p-6",    id:"form",
 },[
@@ -245,8 +246,8 @@ createElement("div", { class: "flex items-center mt-6 mb-2" }, [
     createElement("input", {
         class: "border-0 border-b-2 border-gray-300 focus:outline-none focus:border-[#008F8B] w-full py-1 text-gray-900 placeholder-gray-400 bg-transparent ml-9",
         placeholder: "Nom",
-        type: "text",
-        id:'nom'
+                    type: "text",
+                    id:'nom'
     })
     ]),createElement("div", { class: "flex  flex -col items-center mb-2 ml-1" }, [
     createElement("span", { class: "mr-2 text-gray-500",id:"icontelephone" }, 
@@ -256,8 +257,8 @@ createElement("div", { class: "flex items-center mt-6 mb-2" }, [
         class: "border-b-2 border-gray-300 focus:border-[#008F8B] bg-transparent outline-none text-gray-900 mr-2",
     }, [
         createElement("option", { value: "+221", selected: true }, "SN +221")
-    ]),
-  createElement('div',{ class:"flex  flex-col gap-[5px]" ,id:"erreurtelephone"}, createElement("input", {
+            ]),
+            createElement('div',{ class:"flex  flex-col gap-[5px]" ,id:"erreurtelephone"}, createElement("input", {
         class: "border-0 border-b-2 border-gray-300 focus:outline-none focus:border-[#008F8B] w-full py-1 text-gray-900 placeholder-gray-400 bg-transparent ml-2",
         placeholder: "Téléphone",
         type: "text",

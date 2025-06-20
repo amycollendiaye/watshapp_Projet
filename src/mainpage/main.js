@@ -1,9 +1,12 @@
 import {createElement} from '../componement.js';
 import "../style.css";
+import  {buildInterface} from './pageParametre.js'
 import {message,status,chaine,communaute,parametre,fondDiscussion,canare} from "./svg.js"
 // import{clean} from "./cleanPage.js"
 import  {discussionView} from "./pageDiscussion.js"
 import {StatusView} from "./pageStatut.js"
+  import {viewCommunaute} from "./pageCommunaute.js"
+
 
 // Création de l'interface sans l'ajouter au DOM
 const silderBar = createElement("div", {
@@ -14,24 +17,25 @@ const silderBar = createElement("div", {
     },
     [
         createElement("button", {
-            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
+            class: 'w-[40px] flex text-gray-600 justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
             id: "message",
             onclick: discussionView
         }),
         createElement("button", {
-            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
+            class: 'w-[40px] flex  text-gray-600  justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
             id: 'status',
             onclick: StatusView
         }),
         createElement("button", {
-            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
+            class: 'w-[40px] flex  text-gray-600  justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
 
             id: 'chaine'
         }),
         createElement("button", {
-            class: 'w-[40px] flex justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
+            class: 'w-[40px] flex text-gray-600  justify-center items-center h-[40px] hover:border-2  hover:rounded-full',
 
-            id: 'communaute'
+            id: 'communaute',
+            onclick:viewCommunaute
         })
     ]),
     createElement('div', {
@@ -39,8 +43,9 @@ const silderBar = createElement("div", {
     },
     [
         createElement("button", {
-            class: '',
+            class: 'text-gray-600 ',
             id: "parametre"
+            ,onclick:buildInterface
         }),
         createElement("button", {
             class: 'w-[30px] h-[30px]  rounded-full overflow-hidden'
@@ -82,6 +87,8 @@ function initChatInterface() {
     const buttonChaine = document.getElementById('chaine');
     const buttonCommunaute = document.getElementById('communaute');
     const buttonParametre = document.getElementById('parametre');
+    console.log(buttonParametre);
+    
 const fond=document.getElementById("fond")
     if (fond) fond.innerHTML = fondDiscussion;
 

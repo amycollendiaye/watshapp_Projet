@@ -148,7 +148,7 @@ function popupConversation() {
     console.log('fk,gjf')
     // Créer le container du popup avec Tailwind CSS
     const popup = createElement('div', {
-        class: 'absolute top-[20rem] p-2 right-[45rem] bg-white rounded-lg border border-gray-200 min-w-64 popup-enter',
+        class: 'absolute top-[17rem] p-2 right-[45rem] bg-white rounded-lg border border-gray-200 min-w-64 popup-enter',
     });
     
     console.log(popup)
@@ -325,7 +325,7 @@ function popupEdit() {
         {
             icon: favoris,
             text: 'Ajouter aux favoris',
-            classes: 'flex hover:rounded-[10px] items-center px-4 py-3 hover:bg-[#F7F5F3]  cursor-pointer transition-colors duration-150 ',
+            classes: 'flex   items-center px-4 py-3 hover:rounded-[10px] hover:bg-[#F7F5F3]  cursor-pointer transition-colors duration-150 ',
             action: 
                () => {
                 alert('Sélectionner les discussions cliqué!');

@@ -89,4 +89,32 @@ function openDiscussion(contact) {
     const event = new CustomEvent('openDiscussion', { detail: contact });
     document.dispatchEvent(event);
 }
-export {displayContactsWithMessages}
+
+function createCocntactList(contacts) {
+    const container = createElement('div', {
+        class: 'w-full h-full overflow-y-auto'
+    });
+
+    contacts.forEach(contact => {
+        const contactElement = createElement('div', {
+            class: 'flex items-center p-4 hover:bg-gray-100 cursor-pointer',
+            onclick: () => handleContactClick(contact)
+        }, [
+            createElement('div', {
+                class: 'w-10 h-10 rounded-full bg-[#008F8B] flex items-center justify-center text-white'
+            }, contact.telephone[0].toUpperCase()),
+            createElement('div', {
+                class: 'ml-3'
+            }, [
+                createElement('div', {
+                    class: 'font-medium'
+                }, `+${contact.countryCode || ''} ${contact.telephone}`)
+            ])
+        ]);
+
+        container.appendChild(contactElement);
+    });
+
+    return container;
+}
+export {displayContactsWithMessages,createCocntactList}
